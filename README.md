@@ -1,6 +1,6 @@
 RESTful APO assignments module 1
 
-##start application
+## start application
 node index.js
 
 ## cURL commands
