@@ -1,5 +1,5 @@
 let products = [
-    {id: "1", "slug": "pc-gpu", "name": "Nvidia GPU"}
+    {id: "1", "slug": "pc-gpu-1", "name": "Nvidia GPU"}
 ]
 
 const all = () => {

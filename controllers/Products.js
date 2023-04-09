@@ -1,31 +1,31 @@
 const Products = require('../models/Products')
 
-const index = (reg, res) => {
-  const products = Products.all
- res.json(products)
+const index = (req, res) => {
+  const products = Products.all()
+  res.json(products)
 };
 
-const form = ( reg, res) => {
+const form = (req, res) => {
   res.send('products.form')
 }
 
-const show = ( reg, res) => {
-  const products = Products.find(reg.param.id)
+const show = (req, res) => {
+  const product = Products.find(req.params.id)
+  res.json(product)
+}
+
+const create = (req, res) => {
+  const products = Products.create(req.body)
   res.json(products)
 }
 
-const create = ( reg, res) => {
-  const products = Products.create(reg.body)
+const update = (req, res) => {
+  const products = Products.update(req.params.id, req.body)
   res.json(products)
 }
 
-const update = ( reg, res) => {
-  const products = Products.update(reg.param.id, reg.body)
-  res.json(products)
-}
-
-const remove = ( reg, res) => {
-  const products = Products.remove(reg.param.id)
+const remove = (req, res) => {
+  const products = Products.remove(req.params.id)
   res.json(products)
 }
 
