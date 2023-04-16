@@ -7,13 +7,7 @@ app.set("views", __dirname + "/templates");
 app.set("view engine", "twig");
 
 app.get("/", (req, res) => {
-  res.render("home", {
-    name: "World!",
-    users: [
-      { name: "John", email: "test@test.com" },
-      { name: "Jane", email: "jane@test.com" },
-    ],
-  });
+  res.render("views/home")
 });
 
 // Configure body-parser to parse URL-encoded data
