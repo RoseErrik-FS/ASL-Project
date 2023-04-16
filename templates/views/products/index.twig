@@ -7,6 +7,7 @@
         <li>
             {{ product.name }} - ${{ product.price }} -
             <a href="/products/{{ product.id }}/edit">edit</a> | <a href="/products/{{ product.id }}/delete">delete</a>
+             <!-- The above line displays links to edit or delete the product. The "product.id" variable is used to construct the URLs. -->
         </li>
     {% endfor %}
     </ul>
