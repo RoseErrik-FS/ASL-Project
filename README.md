@@ -19,7 +19,7 @@ then `npm run watch`
 
 ## Usage
 
-- To view all products, visit the homepage at `/products`.
-- To add a new product, click on the "Add Product" button on the homepage.
+- To view all products, visit the `/products` page.
+- To add a new product, manually add `/new` after `/products/`
 - To edit a product, click the "edit" link next to the product in the list.
 - To delete a product, click the "delete" link next to the product in the list.
