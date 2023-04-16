@@ -1,0 +1,15 @@
+{% extends 'layouts/base.twig' %} {% block main_content %}
+<h2>About {{ product.name }}</h2>
+<ul>
+  <li>
+    <label>ID: </label> {{ product.id }} <label>Name: </label>
+    {{ product.name }} <label>Price: </label> ${{ product.price }}
+         <!-- The above line displays the ID, name, and price of the current product. The double curly braces "{{ }}" indicate that these are dynamic values that will be filled in at runtime. -->
+  </li>
+</ul>
+<p>
+  <a href="/products/{{ product.id }}/edit">Edit</a> |
+  <a href="/products/{{ product.id }}/delete">delete</a>
+   <!-- The above line displays links to edit or delete the product. The "product.id" variable is used to construct the URLs. -->
+</p>
+{% endblock %}
