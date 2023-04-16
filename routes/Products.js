@@ -27,7 +27,7 @@ router.post("/:id", productCtrl.update);
 router.delete("/:id", productCtrl.remove);
 
 // Route to remove a product using a POST request (alternative method)
-router.post("/:id/delete", productCtrl.remove);
+router.get("/:id/delete", productCtrl.remove);
 
 // Export the router to be used in other parts of the application
 module.exports = router;

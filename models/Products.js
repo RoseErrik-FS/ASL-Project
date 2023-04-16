@@ -1,6 +1,6 @@
 // Initialize an array of products
 let products = [
-    {id: "1", slug: "pc-gpu-1", name: "Nvidia GPU"}
+    {id: "1", slug: "pc-gpu-1", name: "Nvidia GPU", price: "1000"}
 ];
 
 // Function to return all products
@@ -10,8 +10,9 @@ const all = () => {
 
 // Function to create a new product and add it to the products array
 const create = (product) => {
-    products.push(product);
-    return products;
+    const id = Number(products[products.length - 1].id) + 1 + "";
+    products.push({ id, ...product });
+    return products[products.length - 1];
 };
 
 // Function to find a product by its ID

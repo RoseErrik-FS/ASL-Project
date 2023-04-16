@@ -1,0 +1,13 @@
+{% extends 'layouts/base.twig' %} {% block main_content %}
+<h2>About {{ product.name }}</h2>
+<ul>
+  <li>
+    <label>ID: </label> {{ product.id }} <label>Name: </label>
+    {{ product.name }} <label>Price: </label> ${{ product.price }}
+  </li>
+</ul>
+<p>
+  <a href="/products/{{ product.id }}/edit">Edit</a> |
+  <a href="/products/{{ product.id }}/delete">delete</a>
+</p>
+{% endblock %}
