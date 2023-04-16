@@ -1,16 +1,25 @@
-RESTful APO assignments module 1
+RESTful API assignments module 2 - Activity: RESTful Template Structure
 
-## start application
-node index.js
+# Express Product Manager
 
-## cURL commands
+A simple product management application built using Node.js, Express, and Twig for templating.
 
-curl.exe http://localhost:3000/products
+## Setup
 
-curl.exe --request POST --data "id=2&slug=PC-GPU-2&name=AMD GPU" http://localhost:3000/products
+clone the repo,
+run `npm install`
+then `npm run watch`
 
-curl.exe --request POST --data "id=2&slug=PC-GPU-2&name=AMD GPU - NEW" http://localhost:3000/products/2
+## Features
 
-curl.exe http://localhost:3000/products/2
+- List all products
+- Add a new product with a name and price
+- Edit an existing product's name and price
+- Delete a product
 
-curl.exe --request POST http://localhost:3000/products/1/delete
+## Usage
+
+- To view all products, visit the homepage at `/products`.
+- To add a new product, click on the "Add Product" button on the homepage.
+- To edit a product, click the "edit" link next to the product in the list.
+- To delete a product, click the "delete" link next to the product in the list.
