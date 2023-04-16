@@ -1,9 +1,6 @@
 RESTful API assignments module 2 - Activity: RESTful Template Structure
 
 # ASL Project
-
-A simple product management application built using Node.js, Express, and Twig for templating.
-
 ## Setup
 
 clone the repo,
