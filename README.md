@@ -1,6 +1,6 @@
 RESTful API assignments module 2 - Activity: RESTful Template Structure
 
-# Express Product Manager
+# ASL Project
 
 A simple product management application built using Node.js, Express, and Twig for templating.
 
