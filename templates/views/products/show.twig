@@ -1,15 +1,23 @@
-{% extends 'layouts/base.twig' %} {% block main_content %}
-<h2>About {{ product.name }}</h2>
+{% extends 'layouts/base.twig' %} 
+
+{% block main_content %}
+<h2>About {{ products.title }}</h2>
 <ul>
   <li>
-    <label>ID: </label> {{ product.id }} <label>Name: </label>
-    {{ product.name }} <label>Price: </label> ${{ product.price }}
-         <!-- The above line displays the ID, name, and price of the current product. The double curly braces "{{ }}" indicate that these are dynamic values that will be filled in at runtime. -->
+    <label>ID: </label> {{ products.id }}
+    <label>Name: </label> {{ products.title }}
+    <label>Slug: </label> {{ products.slug }}
+    <label>Price: </label> ${{ products.price }}
+    <label>Is Published: </label> {{ products.is_published ? 'Yes' : 'No' }}
+    <ul>
+      <li>
+        <label>Description: </label> {{ products.description | raw }}
+      </li>
+    </ul>
   </li>
 </ul>
 <p>
-  <a href="/products/{{ product.id }}/edit">Edit</a> |
-  <a href="/products/{{ product.id }}/delete">delete</a>
-   <!-- The above line displays links to edit or delete the product. The "product.id" variable is used to construct the URLs. -->
+  <a href="/products/{{ products.id }}/edit">Edit</a> |
+  <a href="/products/{{ products.id }}/delete">delete</a>
 </p>
 {% endblock %}

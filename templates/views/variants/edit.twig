@@ -1,0 +1,6 @@
+{% extends 'layouts/base.twig' %}
+
+{% block main_content %}
+    <h2>Edit Variant</h2>
+    {% include 'views/variants/_form.twig' with  { 'variant': variants, 'product': products } %}
+{% endblock %}
