@@ -1,0 +1,6 @@
+{% extends 'layouts/base.twig' %}
+
+{% block main_content %}
+    <h2>Edit Image</h2>
+    {% include 'views/images/_form.twig' with  { 'variants': variants } %}
+{% endblock %}

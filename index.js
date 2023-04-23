@@ -15,9 +15,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Import the product router from the 'routes' folder
 const productRouter = require("./routes/Products");
+const variantRouter = require("./routes/Variants");
+const imageRouter = require("./routes/Images");
 
 // Mount the product router on the '/products' path
 app.use("/products", productRouter);
+app.use("/variants", variantRouter);
+app.use("/images", imageRouter);
 
 // Start the server on port 3000
 app.listen(process.env.PORT || 3000, () => {

@@ -24,3 +24,6 @@ target/
 *.swp
 .DS_Store
 Thumbs.db
+
+# mysql files
+data/mysql.sock

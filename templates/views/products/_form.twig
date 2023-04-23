@@ -1,19 +1,28 @@
 <form
-  method="POST" action="/products/{% if product.id %}{{ product.id }}{% endif %}"
+  method="POST" action="/products/{% if products.id %}{{ products.id }}{% endif %}"
 >
-<!-- The above line specifies the URL to which the form data should be submitted. The "{% if product.id %}{{ product.id }}{% endif %}" code block is a conditional statement that checks if the "product.id" variable is defined, and if so, it includes it in the URL. -->
-  {% if product.id %}
-  <input type="hidden" name="id" value="{{ product.id }}" />
+  {% if products.id %}
+  <input type="hidden" name="id" value="{{ products.id }}" />
   {% endif %}
-<!-- The code above creates a hidden input field named "id" and sets its value to the value of the "product.id" variable. This is used to identify the product being edited when the form is submitted. -->
-{% endif %}
   <div>
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name" value="{{ product.name }}" />
+    <label for="title">Name:</label>
+    <input type="text" name="title" id="title" value="{{ products.title }}" />
+  </div>
+  <div>
+    <label for="slug">Slug:</label>
+    <input type="text" name="slug" id="slug" value="{{ products.slug }}" />
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea name="description" id="description">{{ products.description }}</textarea>
   </div>
   <div>
     <label for="price">Price:</label>
-    <input type="number" name="price" id="price" value="{{ product.price }}" />
+    <input type="number" name="price" id="price" value="{{ products.price }}" />
+  </div>
+  <div>
+    <label for="is_published">Is Published:</label>
+    <input type="checkbox" name="is_published" id="is_published" {% if products.is_published %}checked{% endif %} />
   </div>
   <div>
     <input type="submit" value="Submit" name="submit" aria-label="Submit" />

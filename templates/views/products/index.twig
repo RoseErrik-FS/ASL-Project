@@ -1,14 +1,20 @@
-{% extends 'layouts/base.twig' %}
-
-{% block main_content %}
-    <h2>All Products</h2>
+{% extends 'layouts/base.twig' %} {% block main_content %}
+<h2>All Products</h2>
+<a href="/products/new">Create a new product</a>
+<ul>
+  {% for products in products %}
+  <li>
+    {{ products.title }} - ${{ products.price }} -
     <ul>
-    {% for product in products %}
-        <li>
-            {{ product.name }} - ${{ product.price }} -
-            <a href="/products/{{ product.id }}/edit">edit</a> | <a href="/products/{{ product.id }}/delete">delete</a>
-             <!-- The above line displays links to edit or delete the product. The "product.id" variable is used to construct the URLs. -->
-        </li>
-    {% endfor %}
+      <li>
+        <label>Description: </label> {{ products.description | raw }} |
+        <label>Is Published: </label> {{ products.is_published ? "Yes" : "No" }}
+      </li>
     </ul>
+    <a href="/products/{{ products.id }}/edit">edit</a> |
+    <a href="/products/{{ products.id }}/delete">delete</a>
+    <!-- The above line displays links to edit or delete the product. The "product.id" variable is used to construct the URLs. -->
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}

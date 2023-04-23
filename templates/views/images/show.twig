@@ -1,0 +1,16 @@
+{% extends 'layouts/base.twig' %} {% block main_content %}
+<h2>About {{ images.title }}</h2>
+<ul>
+  <li>
+    <label>ID: </label> {{ images.id }} 
+  </li>
+  <li>
+    <label>Assigned Variant: </label> {{ variants.title }} 
+  </li>
+</ul>
+<p>
+  <a href="/images/{{ images.id }}/edit">Edit</a> |
+  <a href="/images/{{ images.id }}/delete">delete</a>
+   <!-- The above line displays links to edit or delete the image. The "image.id" variable is used to construct the URLs. -->
+</p>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'layouts/base.twig' %} 
+
+{% block main_content %}
+<h2>About {{ variants.title }}</h2>
+<ul>
+  <li>
+    <label>ID: </label> {{ variants.id }} 
+    <label>Name: </label> {{ variants.title }} 
+    <label>Price: </label> ${{ variants.price }}
+    <label>Products: </label> {{ products.title }}
+    <!-- The above line displays the ID, name, and price of the current variant. The double curly braces "{{ }}" indicate that these are dynamic values that will be filled in at runtime. -->
+    <ul>
+      <li>
+        <label>Inventory: </label> {{ variants.inventory }}
+      </li>
+      <li>
+        <label>Description: </label> {{ variants.description | raw }}
+      </li>
+    </ul>
+  </li>
+</ul>
+<p>
+  <a href="/variants/{{ variants.id }}/edit">Edit</a> |
+  <a href="/variants/{{ variants.id }}/delete">delete</a>
+  <!-- The above line displays links to edit or delete the variant. The "variant.id" variable is used to construct the URLs. -->
+</p>
+{% endblock %}
