@@ -25,5 +25,5 @@ target/
 .DS_Store
 Thumbs.db
 
-# mysql files
-data/mysql.sock
+# Docker files
+data/
