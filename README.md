@@ -1,9 +1,6 @@
 RESTful API assignments module 3 - Activity: Sequelize ORM
 
-# Express Product Manager
-
-A simple product management application built using Node.js, Express, and Twig for templating.
-
+# ASL Project
 ## Setup
 
 clone the repo,
