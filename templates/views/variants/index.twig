@@ -1,23 +1,18 @@
-{% extends 'layouts/base.twig' %}
-
-{% block main_content %}
-    <h2>All Variants</h2>
-    <a href="/variants/new">Create a new variant</a>
+{% extends 'layouts/base.twig' %} {% block main_content %}
+<h2>All Variants</h2>
+<a href="/variants/new">Create a new variant</a>
+<ul>
+  {% for variants in variants %}
+  <li>
+    {{ variants.title }} - ${{ variants.price }} - {{ products.title }}
     <ul>
-    {% for variants in variants %}
-        <li>
-            {{ variants.title }} - ${{ variants.price }} - {{ products.title}}
-            <ul>
-                <li>
-                  <label>Inventory: </label> {{ variants.inventory }}
-                </li>
-                <li>
-                  <label>Description: </label> {{ variants.description | raw }}
-                </li>
-              </ul>
-            <a href="/variants/{{ variants.id }}/edit">edit</a> | <a href="/variants/{{ variants.id }}/delete">delete</a>
-             <!-- The above line displays links to edit or delete the variant. The "variant.id" variable is used to construct the URLs. -->
-        </li>
-    {% endfor %}
+      <li><label>Inventory: </label> {{ variants.inventory }}</li>
+      <li><label>Description: </label> {{ variants.description | raw }}</li>
     </ul>
+    <a href="/variants/{{ variants.id }}/edit">edit</a> |
+    <a href="/variants/{{ variants.id }}/delete">delete</a>
+    <!-- The above line displays links to edit or delete the variant. The "variant.id" variable is used to construct the URLs. -->
+  </li>
+  {% endfor %}
+</ul>
 {% endblock %}

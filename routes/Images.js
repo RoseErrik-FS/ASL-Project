@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const imagesCtrl = require("../controllers/Images");
+const { uploadImage } = require("../middlewares");
 
 // Define the routes and their corresponding controller functions
 
@@ -18,10 +19,10 @@ router.get("/:id", imagesCtrl.show);
 router.get("/:id/edit", imagesCtrl.form);
 
 // Route to create a new product using a POST request
-router.post("/", imagesCtrl.create);
+router.post("/", imagesCtrl.create, uploadImage);
 
 // Route to update a product's information using a POST request
-router.post("/:id", imagesCtrl.update);
+router.post("/:id", imagesCtrl.update, uploadImage);
 
 // Route to remove a product using a DELETE request
 router.delete("/:id", imagesCtrl.remove);

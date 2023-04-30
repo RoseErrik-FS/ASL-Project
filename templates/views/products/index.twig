@@ -1,20 +1,34 @@
-{% extends 'layouts/base.twig' %} {% block main_content %}
-<h2>All Products</h2>
-<a href="/products/new">Create a new product</a>
-<ul>
-  {% for products in products %}
-  <li>
-    {{ products.title }} - ${{ products.price }} -
-    <ul>
-      <li>
-        <label>Description: </label> {{ products.description | raw }} |
-        <label>Is Published: </label> {{ products.is_published ? "Yes" : "No" }}
-      </li>
-    </ul>
-    <a href="/products/{{ products.id }}/edit">edit</a> |
-    <a href="/products/{{ products.id }}/delete">delete</a>
-    <!-- The above line displays links to edit or delete the product. The "product.id" variable is used to construct the URLs. -->
-  </li>
-  {% endfor %}
-</ul>
+{% extends 'layouts/base.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="/public/new-product.css">
+{% endblock %}
+
+{% block main_content %}
+	<div class="all-products">
+		<h2 class="all-products-title">All Products</h2>
+		<a class="all-products-create" href="/products/new">Create a new product</a>
+		<ul class="all-products-list">
+			{% for products in products %}
+				<li class="all-products-item">
+					{{ products.title }}
+					- ${{ products.price }}
+					-
+					<ul class="all-products-description-list">
+						<li class="all-products-description-item">
+							<label class="all-products-description-label">Description:</label>
+							{{ products.description | raw }}
+							|
+							<label class="all-products-published-label">Is Published:</label>
+							{{ products.is_published ? "Yes" : "No" }}
+						</li>
+					</ul>
+					<a class="all-products-edit" href="/products/{{ products.id }}/edit">edit</a>
+					|
+					<a class="all-products-delete" href="/products/{{ products.id }}/delete">delete</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
 {% endblock %}

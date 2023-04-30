@@ -1,4 +1,4 @@
-RESTful API assignments module 3 - Activity: Sequelize ORM
+RESTful API assignments module 4 - Assignment: E-Commerce Shop
 
 # ASL Project
 ## Setup
@@ -9,6 +9,7 @@ run `docker compose up` in your terminal
 
 ## Features
 
+- Store front, allowing to select products and its different variants.
 - List all products, images, and variants of a product.
 - Add a new product with a name, description, price, slug, and if its published or not.
 - Edit an existing product', description, price, slug, and if its published or not.

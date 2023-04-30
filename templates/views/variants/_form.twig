@@ -1,43 +1,39 @@
-<form method="POST" action="/variants/{% if variants.id %}{{ variants.id }}{% endif %}">
-  {% if variants.id %}
-  <input type="hidden" name="id" value="{{ variants.id }}" />
-  {% endif %}
-  
-  <div>
-    <label for="title">Name:</label>
-    <input type="text" name="title" id="title" value="{{ variants.title }}" />
-  </div>
+{% extends 'layouts/base.twig' %}
+{% block main_content %}
+	<div class="form-card">
+		<form method="POST" action="/variants/{% if variants.id %}{{ variants.id }}{% endif %}" class="product-form">
+			{% if variants.id %}
+				<input type="hidden" name="id" value="{{ variants.id }}"/>
+			{% endif %}
+			<div class="product-form-group">
+				<label for="title" class="product-form-label">Name:</label>
+				<input type="text" name="title" id="title" class="product-form-input" value="{{ variants.title }}"/>
 
-  <div>
-    <label for="slug">Slug:</label>
-    <input type="text" name="slug" id="slug" value="{{ variants.slug }}" />
-  </div>
+				<label for="slug" class="product-form-label">Slug:</label>
+				<input type="text" name="slug" id="slug" class="product-form-input" value="{{ variants.slug }}"/>
+			</div>
+			<div class="product-form-group">
+				<label for="description" class="product-form-label">Description:</label>
+				<textarea name="description" id="description" class="product-form-textarea">{{ variants.description }}</textarea>
+			</div>
+			<div class="product-form-group">
+				<label for="price" class="product-form-label">Price:</label>
+				<input type="number" name="price" id="price" class="product-form-input" value="{{ variants.price }}" step="0.01"/>
 
-  <div>
-    <label for="description">Description:</label>
-    <textarea name="description" id="description">{{ variants.description }}</textarea>
-  </div>
-
-  <div>
-    <label for="price">Price:</label>
-    <input type="number" name="price" id="price" value="{{ variants.price }}" />
-  </div>
-
-  <div>
-    <label for="inventory">Inventory:</label>
-    <input type="number" name="inventory" id="inventory" value="{{ variants.inventory }}" />
-  </div>
-
-  <div>
-    <label>Products</label>
-    <select name="productId">
-      {% for products in products %}
-      <option value="{{ products.id }}" {% if products.id == variants.productId %} selected="selected" {% endif %}>{{ products.title }}</option>
-      {% endfor %}
-    </select>
-  </div>
-
-  <div>
-    <input type="submit" value="Submit" name="submit" aria-label="Submit" />
-  </div>
-</form>
+				<label for="inventory" class="product-form-label">Inventory:</label>
+				<input type="number" name="inventory" id="inventory" class="product-form-input" value="{{ variants.inventory }}"/>
+			</div>
+			<div class="product-form-group">
+				<label class="product-form-label">Products</label>
+				<select name="productId" class="product-form-input">
+					{% for products in products %}
+						<option value="{{ products.id }}" {% if products.id == variants.productId %} selected="selected" {% endif %}>{{ products.title }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div>
+				<input type="submit" value="Submit" name="submit" aria-label="Submit" class="product-form-submit"/>
+			</div>
+		</form>
+	</div>
+{% endblock %}

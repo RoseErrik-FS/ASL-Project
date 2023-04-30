@@ -1,0 +1,64 @@
+{% extends 'layouts/base.twig' %}
+{% block main_content %}
+	<div class="container">
+		<div class="product-card">
+			<div class="product-wrapper">
+				<div class="product-images">
+					{% set defaultImage = variant.Images[0] %}
+					<img src="/public/images/{{ defaultImage.id }}{{ defaultImage.extension }}" alt="{{ product.title }}" class="product-image-main">
+					<div class="product-image-list">
+						{% for image in variant.Images %}
+							<img src="/public/images/{{ image.id }}{{ image.extension }}" alt="{{ product.title }}" class="product-image-thumbnail">
+						{% endfor %}
+					</div>
+				</div>
+
+				<div class="product-details">
+					<h2 class="product-title">
+						{{ product.title }}
+					</h2>
+					<h3 class="product-variant-title">
+						{{ variant.title }}
+					</h3>
+					<p class="product-description">
+						{{ variant.description|raw }}
+					</p>
+					<h4>Options:</h4>
+					<ul class="product-options">
+						{% for option in product.Variants %}
+							<li>
+								{% if option.id == variant.id %}
+									{{ option.title }}
+								{% else %}
+									<a href="/store/{{ product.slug }}?v={{ option.slug }}">{{ option.title }}</a>
+								{% endif %}
+							</li>
+						{% endfor %}
+					</ul>
+					<div class="product-price">
+						<strong>Price:</strong>
+						${{ variant.price }}
+					</div>
+					<div class="product-inventory">
+						<strong>In Stock:</strong>
+						{% if variant.inventory < 10 %}
+							Low Stock!
+						{% elseif variant.inventory == 0 %}
+							Not in Stock
+						{% else %}
+							In Stock
+						{% endif %}
+					</div>
+					<form>
+						<label for="quantity">Quantity:</label>
+						<input type="number" id="quantity" name="quantity" min="1" max="{{ variant.inventory }}" value="1">
+						<button class="button-primary add-to-cart">
+							<i class="fa fa-shopping-cart"></i>
+							Add to Cart
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

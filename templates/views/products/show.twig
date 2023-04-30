@@ -1,23 +1,44 @@
-{% extends 'layouts/base.twig' %} 
+{% extends 'layouts/base.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="/public/new-product.css">
+{% endblock %}
 
 {% block main_content %}
-<h2>About {{ products.title }}</h2>
-<ul>
-  <li>
-    <label>ID: </label> {{ products.id }}
-    <label>Name: </label> {{ products.title }}
-    <label>Slug: </label> {{ products.slug }}
-    <label>Price: </label> ${{ products.price }}
-    <label>Is Published: </label> {{ products.is_published ? 'Yes' : 'No' }}
-    <ul>
-      <li>
-        <label>Description: </label> {{ products.description | raw }}
-      </li>
-    </ul>
-  </li>
-</ul>
-<p>
-  <a href="/products/{{ products.id }}/edit">Edit</a> |
-  <a href="/products/{{ products.id }}/delete">delete</a>
-</p>
+	<div class="new-product container">
+		<h2 class="new-product-title">About
+			{{ products.title }}</h2>
+		<ul class="new-product-list">
+			<li class="new-product-item">
+				<label class="new-product-label">ID:
+				</label>
+				{{ products.id }}
+				<label class="new-product-label">Name:
+				</label>
+				{{ products.title }}
+				<label class="new-product-label">Slug:
+				</label>
+				{{ products.slug }}
+				<label class="new-product-label">Price:
+				</label>
+				${{ products.price }}
+				<label class="new-product-label">Is Published:
+				</label>
+				{{ products.is_published ? 'Yes' : 'No' }}
+				<ul class="new-product-description-list">
+					<li class="new-product-description-item">
+						<label class="new-product-description-label">Description:
+						</label>
+						{{ products.description | raw }}
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p class="new-product-actions">
+			<a class="new-product-edit" href="/products/{{ products.id }}/edit">Edit</a>
+			|
+			<a class="new-product-delete" href="/products/{{ products.id }}/delete">delete</a>
+		</p>
+	</div>
 {% endblock %}
