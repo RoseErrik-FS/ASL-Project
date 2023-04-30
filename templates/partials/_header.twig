@@ -1,10 +1,31 @@
-<header>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/products">Products</a></li>
-            <li><a href="/">About</a></li>
-            <li><a href="/">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+<div id="menu">
+	<div class="menu-wrapper">
+		<div class="pure-menu">
+			<a class="pure-menu-heading" href="/store">GPU Store</a>
+			<ul class="pure-menu-list">
+				<li class="pure-menu-item">
+					<a href="/store">Store</a>
+				</li>
+			</ul>
+		</div>
+		<div id="subMenu">
+			<div class="pure-menu">
+				<ul class="pure-menu-list">
+					<li class="pure-menu-item">
+						<a href="/products">Products</a>
+					</li>
+					<li class="pure-menu-item">
+						<a href="/variants">Variants</a>
+					</li>
+					<li class="pure-menu-item">
+						<a href="/images">Images</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	{% include "../partials/_footer.twig" %}
+	<!-- Includes a footer partial file in the document -->
+
+</div>

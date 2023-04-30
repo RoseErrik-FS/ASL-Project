@@ -4,7 +4,7 @@ const { Variants, Products } = require("../models");
 // Function to handle the index route, which returns all variants
 const index = async (req, res) => {
   const variants = await Variants.findAll();
-  res.render('views/variants/index', { variants});
+  res.render("views/variants/index", { variants });
   //res.json(variants);
 };
 
@@ -15,15 +15,20 @@ const form = async (req, res) => {
     const variants = await Variants.findByPk(req.params.id);
     res.render("views/variants/edit", { variants, products });
   } else {
-    res.render("views/variants/create", { products}  );
+    res.render("views/variants/create", { products });
   }
 };
 
 // Function to handle the show route, which returns a specific variant by its ID
 const show = async (req, res) => {
   const variants = await Variants.findByPk(req.params.id);
-  const products = await variants.getProduct()
-  res.render("views/variants/show", { variants, products});
+  console.log(variants);
+  if (!variants) {
+    res.render("views/variants/show", { error: "Variant not found" });
+    return;
+  }
+  const products = await variants.getProduct();
+  res.render("views/variants/show", { variants, products });
 };
 
 // Function to handle the create route, which creates a new variant using the request body
@@ -36,8 +41,8 @@ const create = async (req, res) => {
 const update = async (req, res) => {
   await Variants.update(req.body, {
     where: {
-      id: Number(req.params.id)
-    }
+      id: Number(req.params.id),
+    },
   });
   res.redirect("/variants/" + req.params.id);
 };
@@ -46,8 +51,8 @@ const update = async (req, res) => {
 const remove = async (req, res) => {
   await Variants.destroy({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   });
   res.redirect("/variants");
 };

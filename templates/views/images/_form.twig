@@ -1,20 +1,24 @@
-<form
-  method="POST" action="/images/{% if images.id %}{{ images.id }}{% endif %}"
->
-<!-- The above line specifies the URL to which the form data should be submitted. The "{% if images.id %}{{ images.id }}{% endif %}" code block is a conditional statement that checks if the "image.id" variable is defined, and if so, it includes it in the URL. -->
-  {% if images.id %}
-  <input type="hidden" name="id" value="{{ images.id }}" />
-  {% endif %}
-<!-- The code above creates a hidden input field named "id" and sets its value to the value of the "image.id" variable. This is used to identify the image being edited when the form is submitted. -->
-<div>
-  <label>Variant: </label>
-  <select name="variantId">
-    {% for variants in variants %}
-    <option value="{{ variants.id}}">{{ variants.title }}</option>
-    {% endfor %}
-  </select>
-</div>
-  <div>
-    <input type="submit" value="Submit" name="submit" aria-label="Submit" />
-  </div>
+<form enctype="multipart/form-data" method="POST" action="/images/{% if images.id %}{{ images.id }}{% endif %}">
+	{% if images.id %}
+		<input type="hidden" name="id" value="{{ images.id }}"/>
+	{% endif %}
+	<div>
+		<label>Parent Variant:</label>
+		<select name="variantId">
+			<option>Select Variant...</option>
+			{% for variants in variants %}
+				<option value="{{ variants.id }}" {% if variants.id == images.variantId %} selected="selected" {% endif %}>
+					{{ variants.title }}
+				</option>
+			{% endfor %}
+		</select>
+	</div>
+	<div>
+		<label for="image">Upload Image:</label>
+		<br/>
+		<input type="file" name="image" id="image"/>
+	</div>
+	<div>
+		<input type="submit" value="Submit" name="submit" aria-label="Submit"/>
+	</div>
 </form>

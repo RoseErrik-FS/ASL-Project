@@ -1,30 +1,25 @@
-<form
-  method="POST" action="/products/{% if products.id %}{{ products.id }}{% endif %}"
->
-  {% if products.id %}
-  <input type="hidden" name="id" value="{{ products.id }}" />
-  {% endif %}
-  <div>
-    <label for="title">Name:</label>
-    <input type="text" name="title" id="title" value="{{ products.title }}" />
-  </div>
-  <div>
-    <label for="slug">Slug:</label>
-    <input type="text" name="slug" id="slug" value="{{ products.slug }}" />
-  </div>
-  <div>
-    <label for="description">Description:</label>
-    <textarea name="description" id="description">{{ products.description }}</textarea>
-  </div>
-  <div>
-    <label for="price">Price:</label>
-    <input type="number" name="price" id="price" value="{{ products.price }}" />
-  </div>
-  <div>
-    <label for="is_published">Is Published:</label>
-    <input type="checkbox" name="is_published" id="is_published" {% if products.is_published %}checked{% endif %} />
-  </div>
-  <div>
-    <input type="submit" value="Submit" name="submit" aria-label="Submit" />
-  </div>
-</form>
+<div class="form-card">
+	<form method="POST" action="/products/{% if products.id %}{{ products.id }}{% endif %}" class="product-form">
+		<div class="product-form-group">
+			<label for="title" class="product-form-label">Name:</label>
+			<input type="text" name="title" id="title" class="product-form-input" value="{{ products.title }}"/>
+
+			<label for="slug" class="product-form-label">Slug:</label>
+			<input type="text" name="slug" id="slug" class="product-form-input" value="{{ products.slug }}"/>
+		</div>
+		<div class="product-form-group">
+			<label for="description" class="product-form-label">Description:</label>
+			<textarea name="description" id="description" class="product-form-textarea">{{ products.description }}</textarea>
+		</div>
+		<div class="product-form-group">
+			<label for="price" class="product-form-label">Price:</label>
+			<input type="number" name="price" id="price" class="product-form-input" value="{{ products.price }}" step="0.01"/>
+
+			<label for="is_published" class="product-form-label">Is Published:</label>
+			<input type="checkbox" name="is_published" id="is_published" class="product-form-checkbox" {% if products.is_published %} checked {% endif %}/>
+		</div>
+		<div>
+			<input type="submit" value="Submit" name="submit" aria-label="Submit" class="product-form-submit"/>
+		</div>
+	</form>
+</div>

@@ -4,7 +4,7 @@ const { Products } = require("../models");
 // Function to handle the index route, which returns all products
 const index = async (req, res) => {
   const products = await Products.findAll();
-  res.render('views/products/index', { products});
+  res.render("views/products/index", { products });
   //res.json(products);
 };
 
@@ -21,32 +21,31 @@ const form = async (req, res) => {
 // Function to handle the show route, which returns a specific product by its ID
 const show = async (req, res) => {
   const products = await Products.findByPk(req.params.id);
-  res.render("views/products/show", { products});
+  res.render("views/products/show", { products });
 };
 
 // Function to handle the create route, which creates a new product using the request body
 const create = async (req, res) => {
   const productData = {
     ...req.body,
-    is_published: req.body.is_published === 'on'
+    is_published: req.body.is_published === "on",
   };
 
   const products = await Products.create(productData);
   res.redirect("/products/" + products.id);
 };
 
-
 // Function to handle the update route, which updates a product's information using the request body
 const update = async (req, res) => {
   const updatedData = {
     ...req.body,
-    is_published: req.body.is_published === 'on'
+    is_published: req.body.is_published === "on",
   };
 
   await Products.update(updatedData, {
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   });
   res.redirect("/products/" + req.params.id);
 };
@@ -55,8 +54,8 @@ const update = async (req, res) => {
 const remove = async (req, res) => {
   await Products.destroy({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   });
   res.redirect("/products");
 };

@@ -4,7 +4,8 @@ const { Images, Variants } = require("../models");
 // Function to handle the index route, which returns all images
 const index = async (req, res) => {
   const images = await Images.findAll();
-  res.render('views/images/index', { images });
+  const variants = await Variants.findAll();
+  res.render("views/images/index", { images, variants });
   //res.json(images);
 };
 
@@ -22,23 +23,35 @@ const form = async (req, res) => {
 // Function to handle the show route, which returns a specific image by its ID
 const show = async (req, res) => {
   const images = await Images.findByPk(req.params.id);
-  const variants = await images.getVariant();
-  res.render("views/images/show", { images, variants });
+  if (!images) {
+    res.status(404).send("Image not found");
+    return;
+  }
+  const variant = await images.getVariant();
+  if (!variant) {
+    res.status(404).send("Variant not found");
+    return;
+  }
+  res.render("views/images/show", { images, variant });
 };
 
 // Function to handle the create route, which creates a new image using the request body
-const create = async (req, res) => {
+const create = async (req, res, next) => {
   const images = await Images.create(req.body);
+  req.body.id = images.id; // Sets a pretext "imageId" for our upload middleware
+  next(); // Invoke our upload middleware with next()
   res.redirect("/images/" + images.id);
 };
 
 // Function to handle the update route, which updates a image's information using the request body
-const update = async (req, res) => {
+const update = async (req, res, next) => {
   await Images.update(req.body, {
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   });
+  req.body.id = req.params.id; // Sets a pretext "imageId" for our upload middleware
+  next(); // Invoke our upload middleware with next()
   res.redirect("/images/" + req.params.id);
 };
 
@@ -46,8 +59,8 @@ const update = async (req, res) => {
 const remove = async (req, res) => {
   await Images.destroy({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   });
   res.redirect("/images");
 };

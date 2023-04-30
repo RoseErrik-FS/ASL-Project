@@ -1,0 +1,47 @@
+{% extends 'layouts/base.twig' %}
+
+{% block title %}All Products
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="/public/product-list.css">
+{% endblock %}
+
+{% block main_content %}
+	<div class="content container">
+		<h3 class="h3">All Products</h3>
+		<hr/>
+		<ul class="product-list">
+			{% for product in products %}
+				<li class="product-list-item">
+					<div class="product-list-item-card">
+						<div class="product-list-item-image">
+							<a href="/store/{{ product.slug }}">
+								{% for variant in product.Variants %}
+									{% set loopIndex = loop.index %}
+									{% for image in variant.Images %}
+										{% if loopIndex == 1 %}
+											<img class="product-list-item-image-pic-{{ loopIndex }}" src="/public/images/{{ image.id }}{{ image.extension }}">
+										{% else %}
+											<img class="product-list-item-image-pic-{{ loopIndex }}" src="/public/images/{{ image.id }}{{ image.extension }}" alt="{{ product.title }}">
+										{% endif %}
+									{% endfor %}
+								{% endfor %}
+							</a>
+						</div>
+						<div class="product-list-item-info">
+							<h3 class="product-list-item-title">
+								<a href="/store/{{ product.slug }}">{{ product.title }}</a>
+							</h3>
+							<p class="product-list-item-description">{{ product.description|truncate(50) }}</p>
+							<div class="product-list-item-price">
+								${{ product.price }}
+							</div>
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

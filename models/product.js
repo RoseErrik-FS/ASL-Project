@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.Products.hasMany(models.Variants)
+      models.Products.hasMany(models.Variants);
     }
   }
   Products.init(
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       slug: DataTypes.STRING,
       description: DataTypes.TEXT,
       price: DataTypes.FLOAT,
-      is_published: DataTypes.BOOLEAN
+      is_published: DataTypes.BOOLEAN,
     },
     {
       sequelize,

@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASL Project</title>
-</head>
-<body>
-  
-  {% include "../partials/_header.twig" %} <!-- Includes a header partial file in the document -->
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>ASL Project</title>
+		{% block stylesheets %}
 
-  {% include "../partials/_subNav.twig" %} <!-- Includes the sub navigation partial file in the document -->
-  
-  {% block main_content %} <!-- Defines a block of content called "main_content" which can be overridden in child templates -->
-    {% endblock %} <!-- Ends the "main_content" block -->
-    
-  {% include "../partials/_footer.twig" %} <!-- Includes a footer partial file in the document -->
-  
-</body>
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+			<link rel="stylesheet" type="text/css" href="/public/app.css"/>
+			<link rel="stylesheet" type="text/css" href="/public/sideNav.css"/>
+			<link rel="stylesheet" type="text/css" href="/public/product-listing.css">
+			<link rel="stylesheet" type="text/css" href="/public/new-product.css">
+
+		{% endblock %}
+	</head>
+	<body>
+		{% include "../partials/_header.twig" %}
+		<!-- Includes a header partial file in the document -->
+		<div class="content">
+			{% block main_content %}
+				<!-- Defines a block of content called "main_content" which can be overridden in child templates -->
+			{% endblock %}
+		</div>
+
+		{% block scripts %}
+
+			<script type="text/javascript" src="app.js"></script>
+
+		{% endblock %}
+	</body>
 </html>
